@@ -1,14 +1,14 @@
-
-import Header from './components/Header';
-import { Outlet } from 'react-router-dom';
-import Footer from './components/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CustomerRouters from './Routers/CustomerRouters';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Outlet/>
-      <Footer/>
+       <BrowserRouter>
+        <Routes>
+          <Route path='/*' element={<CustomerRouters/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

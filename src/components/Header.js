@@ -3,128 +3,133 @@ import React from 'react'
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useNavigate } from 'react-router-dom'
+import { Avatar, Button, Menu, MenuItem } from '@mui/material'
+import { deepPurple } from '@mui/material/colors'
 
 const navigation = {
-  categories: [
-    {
-      id: 'women',
-      name: 'Women',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Dresses', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Denim', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'men',
-      name: 'Men',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
-        },
-        {
-          name: 'Artwork Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-          ],
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
-  ],
+    categories: [
+      {
+        id: 'women',
+        name: 'Women',
+        featured: [
+          {
+            name: 'New Arrivals',
+            href: '/',
+            imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
+            imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
+          },
+          {
+            name: 'Basic Tees',
+            href: '/',
+            imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
+            imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
+          },
+        ],
+        sections: [
+          {
+            id: 'clothing',
+            name: 'Clothing',
+            items: [
+              { name: 'Tops', id:"top", href: `{women/clothing/tops}` },
+              { name: 'Dresses', id:"women_dress", href: '#' },
+              { name: 'Women Jeans', id: 'women_jeans' },
+              { name: 'Lengha Choli', id: 'lengha_choli' },
+              { name: 'Sweaters', id: 'sweater' },
+              { name: 'T-Shirts', id: 't-shirt' },
+              { name: 'Jackets', id: 'jacket' },
+              { name: 'Gouns', id: 'gouns' },
+              { name: 'Sarees', id: 'saree' },
+              { name: 'Kurtas', id: 'kurtas' },
+            ],
+          },
+          {
+            id: 'accessories',
+            name: 'Accessories',
+            items: [
+              { name: 'Watches', id: 'watch' },
+              { name: 'Wallets', id: 'wallet' },
+              { name: 'Bags', id: 'bag' },
+              { name: 'Sunglasses', id: 'sunglasse' },
+              { name: 'Hats', id: 'hat' },
+              { name: 'Belts', id: 'belt' },
+            ],
+          },
+          {
+            id: 'brands',
+            name: 'Brands',
+            items: [
+              { name: 'Full Nelson', id: '#' },
+              { name: 'My Way', id: '#' },
+              { name: 'Re-Arranged', id: '#' },
+              { name: 'Counterfeit', id: '#' },
+              { name: 'Significant Other', id: '#' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'men',
+        name: 'Men',
+        featured: [
+          {
+            name: 'New Arrivals',
+            id: '#',
+            imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+            imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
+          },
+          {
+            name: 'Artwork Tees',
+            id: '#',
+            imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
+            imageAlt:
+              'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+          },
+        ],
+        sections: [
+          {
+            id: 'clothing',
+            name: 'Clothing',
+            items: [
+              { name: 'Mens Kurtas', id: 'mens_kurta' },
+              { name: 'Shirt', id: 'shirt' },
+              { name: 'Men Jeans', id: 'men_jeans' },
+              { name: 'Sweaters', id: '#' },
+              { name: 'T-Shirts', id: 't-shirt' },
+              { name: 'Jackets', id: '#' },
+              { name: 'Activewear', id: '#' },
+              
+            ],
+          },
+          {
+            id: 'accessories',
+            name: 'Accessories',
+            items: [
+              { name: 'Watches', id: '#' },
+              { name: 'Wallets', id: '#' },
+              { name: 'Bags', id: '#' },
+              { name: 'Sunglasses', id: '#' },
+              { name: 'Hats', id: '#' },
+              { name: 'Belts', id: '#' },
+            ],
+          },
+          {
+            id: 'brands',
+            name: 'Brands',
+            items: [
+              { name: 'Re-Arranged', id: '#' },
+              { name: 'Counterfeit', id: '#' },
+              { name: 'Full Nelson', id: '#' },
+              { name: 'My Way', id: '#' },
+            ],
+          },
+        ],
+      },
+    ],
+    pages: [
+      { name: 'Company', id: '/' },
+      { name: 'Stores', id: '/' },
+    ],
 }
 
 function classNames(...classes) {
@@ -132,8 +137,31 @@ function classNames(...classes) {
 }
 
 export default function Header() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [openAuthModal,setOpenAuthModal] = useState(false);
+  const [anchorEl,setAnchorEl] =useState(null);
+  const openUserMenu = Boolean(anchorEl);
+  const jwt = localStorage.getItem("jwt");
+  const navigate = useNavigate()
+  
+  const handleUserClick=(event)=>{
+    setAnchorEl(event.currentTarget);
+  }
 
+  const handleCloseUserMenu = (event)=>{
+    setAnchorEl(null)
+  }
+  const handleOpen = ()=>{
+    setOpenAuthModal(true);
+  }
+  const handleClose = ()=>{
+    setOpenAuthModal(false);
+  }
+  const handleCategoryClick = (category,section,item,close)=>{
+    navigate(`/${category.id}/${section.id}/${item.id}`);
+    close();
+  }
+  
   return (
     <div className="bg-white fixed left-0 right-0 top-0 z-50">
       {/* Mobile menu */}
@@ -224,9 +252,9 @@ export default function Header() {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a href={item.href} className="-m-2 block p-2 text-gray-500">
+                                  <p className="-m-2 block p-2 text-gray-500">
                                     {item.name}
-                                  </a>
+                                  </p>
                                 </li>
                               ))}
                             </ul>
@@ -292,11 +320,11 @@ export default function Header() {
               </div>
 
               {/* Flyout menus */}
-              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
+              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-10">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
-                      {({ open }) => (
+                      {({ open,close }) => (
                         <>
                           <div className="relative flex">
                             <Popover.Button
@@ -360,9 +388,14 @@ export default function Header() {
                                           >
                                             {section.items.map((item) => (
                                               <li key={item.name} className="flex">
-                                                <a href={item.href} className="hover:text-gray-800">
+                                                <p onClick={()=>handleCategoryClick(
+                                                  category,
+                                                  section,
+                                                  item,
+                                                  close
+                                                )}>
                                                   {item.name}
-                                                </a>
+                                                </p>
                                               </li>
                                             ))}
                                           </ul>
@@ -393,13 +426,44 @@ export default function Header() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
-                  </a>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Create account
-                  </a>
+                 {true?( <div>
+                    <Avatar 
+                    className='text-white'
+                    onClick={handleUserClick}
+                    aria-controls={open?"true":undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open?"true":undefined}
+                    sx={{
+                      bgcolor:deepPurple[500],
+                      color:"white",
+                      cursor:"pointer"
+                    }}
+                    >
+                      A
+                    </Avatar>
+                    <Menu
+                      id='basic-menu'
+                      anchorEl={anchorEl}
+                      open={openUserMenu}
+                      onClose={handleCloseUserMenu}
+                      MenuListProps={{
+                        "aria-labelledby":"basic-button"
+                      }}
+                    >
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        Profile
+                      </MenuItem>
+                      <MenuItem onClick={()=>navigate("/account/order")}>My Orders</MenuItem>
+                      <MenuItem>Logout</MenuItem>
+                    </Menu>
+                  </div>):(
+                    <Button
+                      onClick={handleOpen}
+                      className='text-sm font-medium text-gray-700 hover:text-gray-800'
+                    >
+                      Signin
+                    </Button>
+                  )}
                 </div>
 
                 {/* Search */}
@@ -427,5 +491,5 @@ export default function Header() {
         </nav>
       </header>
     </div>
-  )
-}
+  );
+};
